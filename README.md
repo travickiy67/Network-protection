@@ -158,7 +158,7 @@ Fail2Ban запущен, первое сканирование ошибки не
 
 ![img](https://github.com/travickiy67/Network-protection/blob/main/img/2.4.png)  
 
-Проверяем логи Fail2ban, попытка взломв заблокирована  
+Проверяем логи Fail2ban, попытка взлома заблокирована, но через некоторое время раздлокирована. Я настроиь на 1 минуту  
 
 `sudo tail -f /var/log/fail2ban.log`  
 
