@@ -142,27 +142,27 @@
 
 Пароль и логин подобран  
 
-[img](https://github.com/travickiy67/Network-protection/blob/main/img/2.1.png)  
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/2.1.png)  
 
 Логи suricata  
 
-[img](https://github.com/travickiy67/Network-protection/blob/main/img/2.2.png)  
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/2.2.png)  
 
 Fail2Ban запущен, первое сканирование ошибки не показала, но пароль не падобран, второе сканирование выдало ошибку. Fail2Ban забанил злоумышленика.  
 
-[img](https://github.com/travickiy67/Network-protection/blob/main/img/2.3.png)  
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/2.3.png)  
  
 Проверяем логи, обнаружена многократная попытка авторизации   
 
 `sudo tail -f /var/log/auth.log`  
 
-[img](https://github.com/travickiy67/Network-protection/blob/main/img/2.4.png)  
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/2.4.png)  
 
 Проверяем логи Fail2ban, попытка взломв заблокирована  
 
 `sudo tail -f /var/log/fail2ban.log`  
 
-[img](https://github.com/travickiy67/Network-protection/blob/main/img/2.5.png)  
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/2.5.png)  
 
 </details>
  
