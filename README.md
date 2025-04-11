@@ -1,3 +1,5 @@
+# Травицкий Сергей
+
 # Домашнее задание к занятию «Защита сети»
 
 ### Инструкция по выполнению домашнего задания
@@ -47,6 +49,63 @@
 
 *В качестве ответа пришлите события, которые попали в логи Suricata и Fail2Ban, прокомментируйте результат.*
 
+<details>
+<summary>Ответ</summary>  
+
+- Запускаем suricata  
+
+`sudo suricata -c /etc/suricata/suricata.yaml -i enp0s3`
+
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.1.png)  
+
+- Запускаем просмотр логов  
+
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.2.png)  
+
+*suricata зафиксировала все ппопытки сканирования  
+
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.3.png) 
+
+`sudo nmap -sA 192.168.0.8`
+
+Врзможна утечка информации приоритет 2, зафиксировано на какие порты направлена атака и с какими параметрами  
+
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.4.png)  
+
+` sudo nmap -sS 192.168.0.8`
+
+Идентичная информация как и припервом сканировании  
+
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.6.png)  
+
+`sudo nmap -sT 192.168.0.8`  
+
+Сканирование обнаружено, классификация: Обнаружен сетевой троян, приоритет 1
+
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.5.png)  
+
+`sudo nmap -sV 192.168.0.8`
+
+Классификация: Атака веб-приложений
+
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.7.png)  
+
+`sudo nmap -sX 192.168.0.8`
+
+Классификация: Попытка утечки информации
+
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.8.png)  
+
+`sudo nmap -sU 192.168.0.8`
+
+Классификация: Попытка утечки информации  
+
+![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.8.png)  
+
+*Все попутки сканирования suricata распознала и квалифицировала, Fail2Ban не отреагировала на nmap сканирование*  
+
+</details>
+
 ------
 
 ### Задание 2
@@ -73,3 +132,41 @@
 
 
 *В качестве ответа пришлите события, которые попали в логи Suricata и Fail2Ban, прокомментируйте результат.*
+
+<details>
+<summary>Ответ</summary>  
+
+*На атакующей машине запускаем hydra, на атакуемой машмне Fail2Ban остановлен*  
+
+`sudo hydra -L users.txt -P pass.txt 192.168.0.8 ssh`  
+
+Пароль и логин подобран  
+
+[img](https://github.com/travickiy67/Network-protection/blob/main/img/2.1.png)  
+
+Логи suricata  
+
+[img](https://github.com/travickiy67/Network-protection/blob/main/img/2.2.png)  
+
+Fail2Ban запущен, первое сканирование ошибки не показала, но пароль не падобран, второе сканирование выдало ошибку. Fail2Ban забанил злоумышленика.  
+
+[img](https://github.com/travickiy67/Network-protection/blob/main/img/2.3.png)  
+ 
+Проверяем логи, обнаружена многократная попытка авторизации   
+
+`sudo tail -f /var/log/auth.log`  
+
+[img](https://github.com/travickiy67/Network-protection/blob/main/img/2.4.png)  
+
+Проверяем логи Fail2ban, попытка взломв заблокирована  
+
+`sudo tail -f /var/log/fail2ban.log`  
+
+[img](https://github.com/travickiy67/Network-protection/blob/main/img/2.5.png)  
+
+</details>
+ 
+
+
+
+
