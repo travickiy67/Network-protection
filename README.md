@@ -62,7 +62,7 @@
 
 ![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.2.png)  
 
-*suricata зафиксировала все ппопытки сканирования  
+*suricata зафиксировала все ппопытки сканирования*  
 
 ![img](https://github.com/travickiy67/Network-protection/blob/main/img/1.3.png) 
 
